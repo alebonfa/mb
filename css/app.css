@@ -1,0 +1,123 @@
+@media all and (device-width: 320px){
+	body {
+	}
+}
+
+
+body {
+	width: 200px;
+}
+
+div.venue
+{   
+	float: left;
+	padding: 10px;
+	background: #efefef;
+	height: 90px;
+	margin: 10px;
+	width: 340px;
+}
+div.venue a
+{
+	color:#000;
+	text-decoration: none;
+
+}
+div.venue .icon
+{
+	background: #000;
+	width: 88px;
+	height: 88px;
+	float: left;
+	margin: 0px 10px 0px 0px;
+}
+div.city
+{
+	background: #ababff;
+	color: #1313ff;
+	clear: both;
+	margin-top: 20px;
+}
+
+div.mapsRoute
+{
+	height: 240px;
+	width: 100%;
+	margin: 0px;
+	background: transparent url(../images/papirus_texture.jpg);
+
+	/*
+	background-color:#fffe73;
+	color:#05ff05;
+	*/
+}
+
+div.distance
+{
+	width: 340px;
+	margin: 0px;
+	background-color:#000;
+	color:#fff;
+}
+
+div.closePlaceList
+{
+	width: 340px;
+	padding-top:15px;
+	padding-bottom:15px;
+	margin:0px;
+	background-color:#EDEDED;
+}
+
+div.closePlaceList a:hover
+{
+	background-color:#D6D6D6;
+	color: #6D6D6D;
+	border-bottom:3px solid #EA0000;
+}
+
+.getPrizes
+{
+	color:#ff0000;
+}
+
+.prizeText
+{
+	background: transparent url(../images/papirus_texture.jpg);
+	font-family: arial, helvetica, serif;
+	color: black;
+	margin: 0px;
+	padding: 10px;
+}
+
+.prizeIcon
+{
+	margin:10px;
+}
+
+.blockTime
+{
+	background-color: #ddd;
+}
+
+.unblockTime
+{
+	margin-left: 20px;
+	width: 150px;
+	height: 50px;
+	background-color: black;
+	color: green;
+	font-family: arial, helvetica, serif;
+	font-size: 50%;
+	border: none;
+}
+
+.myPoints
+{
+	color: red;
+}
+
+.ui-block-b
+{
+	text-align: right;
+}

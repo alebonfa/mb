@@ -1,0 +1,95 @@
+<div data-role="page" data-url="newPlayer.html" data-overlay-theme="e">
+	<div data-role="header">
+		<h1>New Player</h1>
+	</div>
+	<div data-role="content">
+		<form action="" id="frmNewPlayer" method="post" autocomplete="off">
+			<input type="text"     name="playerName" id="playerName"  pattern="^[a-zA-Z][a-zA-Z0-9]{3,30}" value="" placeholder="Nome do Jogador" required/>
+			<input type="password" name="playerPwd1" id="playerPwd1" value="" placeholder="Escolher a Senha" required/>
+			<input type="password" name="playerPwd2" id="playerPwd2" value="" placeholder="Repetir a Senha" required/>
+			<div style="display:none">
+				<input type="submit" id="sbmNewPlayer" value=""/>
+			</div>
+			<input type="button" id="btnRegister" value="Registrar"/>
+		</form>
+	</div>
+
+	<script>
+		$(document).on('click','#btnRegister', function(){
+
+			var lat = 0;
+			var lng = 0;
+			city = '';
+			country = '';
+
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(getPlayerLocal);
+			}
+
+			function getPlayerLocal(position) {
+				lat = position.coords.latitude;
+				lng = position.coords.longitude;
+
+				var geocoder = new google.maps.Geocoder();
+				var latlng = new google.maps.LatLng(lat, lng);
+				geocoder.geocode({'latLng': latlng}, function(results, status) {
+					if (status == google.maps.GeocoderStatus.OK) {
+						if (results[1]) {
+							outer_loop:
+				            for (var i=0; i<results[0].address_components.length; i++) {
+		            			for (var b=0;b<results[0].address_components[i].types.length;b++) {
+					                if (results[0].address_components[i].types[b] == "administrative_area_level_2") {
+				                    	city = results[0].address_components[i].long_name;
+		                			}
+					                if (results[0].address_components[i].types[b] == "country") {
+				                    	country = results[0].address_components[i].long_name;
+		                			}
+		                			if(city.length > 0 && country.length > 0) {
+						   		        if($("#frmNewPlayer")[0].checkValidity()) {
+								            $.ajax({
+								                type: "POST",
+								                url: "php/register.php",
+								                data: $("#frmNewPlayer").serialize()+"&mbDeviceID="+mbDeviceID+"&lat="+lat+"&lng="+lng+"&city="+city+"&country="+country,
+								                dataType: 'json',
+								                success: function(msg){
+								                    if (msg['status'] == "success") {
+								                        alertSignupSuccess(msg['message'], msg['playerName'], msg['playerID']);
+								                    } else {
+								                        alertSignupError(msg['message']);
+								                    }
+								                }
+								            });
+								        } else {
+								            alert('Faltam Dados!');
+								            $("#sbmNewPlayer").trigger("click");
+								        }
+								        break outer_loop;
+								    }
+		            			}
+		        			}
+				        }
+		      		}
+		    	});
+
+		    }
+
+	    });
+
+	    function alertSignupError(msg) {
+	        alert(msg);
+	    }
+
+	    function alertSignupSuccess(msg, playerName, playerID) {
+	        if(Modernizr.sessionstorage) {
+				sessionStorage.setItem('mbPlayerName', playerName);
+				sessionStorage.setItem('mbPlayerID', playerID);
+		        window.location.href="closeAcorns.php";
+			} else {
+				alert('Seu Dispositivo não é compatível com este Jogo!');
+		        window.location.href="index.php";
+			}
+	    }
+	</script>
+
+</div>
+

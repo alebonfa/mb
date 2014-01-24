@@ -1,0 +1,1 @@
+[08-Jan-2014 13:10:49 America/Sao_Paulo] PHP Warning:  mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Can't connect to MySQL server on 'www.magicbandit.com' (111) in /home/magicban/public_html/php/connMagicBandit.php on line 6

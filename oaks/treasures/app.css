@@ -1,0 +1,62 @@
+div.venue
+{   
+	float: left;
+	padding: 10px;
+	background: #efefef;
+	height: 90px;
+	margin: 10px;
+	width: 340px;
+}
+div.venue a
+{
+	color:#000;
+	text-decoration: none;
+
+}
+div.venue .icon
+{
+	background: #000;
+	width: 88px;
+	height: 88px;
+	float: left;
+	margin: 0px 10px 0px 0px;
+}
+div.city
+{
+	background: #ababff;
+	color: #1313ff;
+	clear: both;
+	margin-top: 20px;
+}
+
+div.mapsRoute
+{
+	height: 340px;
+	margin: 0px;
+	background-color:#ccc;
+	color:#05ff05;
+}
+
+div.distance
+{
+	width: 340px;
+	margin: 0px;
+	background-color:#000;
+	color:#fff;
+}
+
+div.closePlaceList
+{
+	width: 340px;
+	padding-top:15px;
+	padding-bottom:15px;
+	margin:0px;
+	background-color:#EDEDED;
+}
+
+div.closePlaceList a:hover
+{
+	background-color:#D6D6D6;
+	color: #6D6D6D;
+	border-bottom:3px solid #EA0000;
+}
